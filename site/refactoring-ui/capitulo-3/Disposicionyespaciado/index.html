@@ -1,0 +1,1318 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Notas de aprendizaje de Refactoring UI">
+      
+      
+        <meta name="author" content="Alexander Guerrero">
+      
+      
+      
+        <link rel="prev" href="../../capitulo-2/Jerarquiaestodo/">
+      
+      
+        <link rel="next" href="../../../Efficient_NodeJS/cap1/nodeFundamentals.md">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.51">
+    
+    
+      
+        <title>Disposicion y espaciado - REFACTORING UI</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../../../assets/stylesheets/modern/main.62c9b9cc.min.css">
+      
+        
+          
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/modern/palette.dfe2e883.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#disposicion-y-espaciado" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="REFACTORING UI" class="md-header__button md-logo" aria-label="REFACTORING UI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            REFACTORING UI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Disposicion y espaciado
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="none" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/alexanderguerrero1998/zensical-refactoring-ui" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-refactoring-ui
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="REFACTORING UI" class="md-nav__button md-logo" aria-label="REFACTORING UI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 7v14M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>
+
+    </a>
+    REFACTORING UI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/alexanderguerrero1998/zensical-refactoring-ui" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    zensical-refactoring-ui
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  REFACTORING UI
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  REFACTORING UI
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-1/Empezandodecero/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  EMPEZANDO DE CERO
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../capitulo-2/Jerarquiaestodo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  JERARQUIA ES TODO
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  DISPOSICION Y ESPACIADO
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="././" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  DISPOSICION Y ESPACIADO
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#empieza-con-demasiado-espacio-en-blanco" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Empieza con demasiado espacio en blanco
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Empieza con demasiado espacio en blanco">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-espacio-en-blanco-deberia-eliminarse-no-anadirse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        El espacio en blanco debería eliminarse, no añadirse
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#las-ui-densas-tienen-su-lugar" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Las UI densas tienen su lugar
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#establece-un-sistema-de-espaciado-y-tamano" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Establece un sistema de espaciado y tamaño
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Establece un sistema de espaciado y tamaño">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#una-escala-lineal-no-funcionara" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Una escala lineal no funcionará
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definiendo-el-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Definiendo el sistema
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usando-el-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Usando el sistema
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-tienes-que-llenar-toda-la-pantalla" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        No tienes que llenar toda la pantalla
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="No tienes que llenar toda la pantalla">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduce-el-lienzo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reduce el lienzo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#piensa-en-columnas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Piensa en columnas
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-lo-fuerces" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        No lo fuerces
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#los-grids-estan-sobrevalorados" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Los grids están sobrevalorados
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Los grids están sobrevalorados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-todos-los-elementos-deberian-ser-fluidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        No todos los elementos deberían ser fluidos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-encojas-un-elemento-hasta-que-lo-necesites" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        No encojas un elemento hasta que lo necesites
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-dimensionamiento-relativo-no-escala" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        El dimensionamiento relativo no escala
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El dimensionamiento relativo no escala">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relaciones-dentro-de-los-elementos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Relaciones dentro de los elementos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evita-el-espaciado-ambiguo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Evita el espaciado ambiguo
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  OTHER BOOK
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+  OTHER BOOK
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Efficient_NodeJS/cap1/nodeFundamentals.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  NODE FUNDAMENTALS
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#empieza-con-demasiado-espacio-en-blanco" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Empieza con demasiado espacio en blanco
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Empieza con demasiado espacio en blanco">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-espacio-en-blanco-deberia-eliminarse-no-anadirse" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        El espacio en blanco debería eliminarse, no añadirse
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#las-ui-densas-tienen-su-lugar" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Las UI densas tienen su lugar
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#establece-un-sistema-de-espaciado-y-tamano" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Establece un sistema de espaciado y tamaño
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Establece un sistema de espaciado y tamaño">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#una-escala-lineal-no-funcionara" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Una escala lineal no funcionará
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definiendo-el-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Definiendo el sistema
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usando-el-sistema" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Usando el sistema
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-tienes-que-llenar-toda-la-pantalla" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        No tienes que llenar toda la pantalla
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="No tienes que llenar toda la pantalla">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#reduce-el-lienzo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Reduce el lienzo
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#piensa-en-columnas" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Piensa en columnas
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-lo-fuerces" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        No lo fuerces
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#los-grids-estan-sobrevalorados" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Los grids están sobrevalorados
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Los grids están sobrevalorados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-todos-los-elementos-deberian-ser-fluidos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        No todos los elementos deberían ser fluidos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-encojas-un-elemento-hasta-que-lo-necesites" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        No encojas un elemento hasta que lo necesites
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#el-dimensionamiento-relativo-no-escala" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        El dimensionamiento relativo no escala
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El dimensionamiento relativo no escala">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#relaciones-dentro-de-los-elementos" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Relaciones dentro de los elementos
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#evita-el-espaciado-ambiguo" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Evita el espaciado ambiguo
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  
+  <span class="md-ellipsis">
+    Get started
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      <li class="md-path__item">
+        <a href="../../capitulo-1/Empezandodecero/" class="md-path__link">
+          
+  
+  <span class="md-ellipsis">
+    REFACTORING UI
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="disposicion-y-espaciado">Disposicion y espaciado<a class="headerlink" href="#disposicion-y-espaciado" title="Permanent link">&para;</a></h1>
+<h2 id="empieza-con-demasiado-espacio-en-blanco">Empieza con demasiado espacio en blanco<a class="headerlink" href="#empieza-con-demasiado-espacio-en-blanco" title="Permanent link">&para;</a></h2>
+<p>Una de las formas más fáciles de limpiar un diseño es simplemente darle a cada elemento un poco más de espacio para respirar. </p>
+<p><img alt="" src="../espaciob.png" /></p>
+<p>Suena bastante simple, ¿no? Entonces, ¿por qué no lo hacemos normalmente?</p>
+<h3 id="el-espacio-en-blanco-deberia-eliminarse-no-anadirse">El espacio en blanco debería eliminarse, no añadirse<a class="headerlink" href="#el-espacio-en-blanco-deberia-eliminarse-no-anadirse" title="Permanent link">&para;</a></h3>
+<p>Al diseñar para la web, el espacio en blanco casi siempre se añade a un diseño — si algo se ve un poco apretado, añades un poco de margen o padding hasta que las cosas se vean mejor.</p>
+<p><img alt="" src="../espacior.png" /></p>
+<p>El problema con este enfoque es que los elementos solo reciben la cantidad mínima de espacio para respirar necesaria para no verse activamente mal. Para que algo realmente se vea genial, generalmente necesitas más espacio en blanco.</p>
+<p>Un mejor enfoque es empezar dándole a algo demasiado espacio, y luego eliminarlo hasta que estés satisfecho con el resultado. </p>
+<p><img alt="" src="../espacio50.png" /></p>
+<p>Podrías pensar que terminarías con demasiado espacio en blanco de esta manera, pero en la práctica, lo que puede parecer "un poco demasiado" cuando te enfocas en un elemento individual termina siendo más cercano a "lo justo" en el contexto de una UI completa.</p>
+<h2 id="las-ui-densas-tienen-su-lugar">Las UI densas tienen su lugar<a class="headerlink" href="#las-ui-densas-tienen-su-lugar" title="Permanent link">&para;</a></h2>
+<p>Mientras que las interfaces con mucho espacio para respirar casi siempre se sienten más limpias y simples, ciertamente hay situaciones donde tiene sentido que un diseño sea mucho más compacto.</p>
+<p>Por ejemplo, si estás diseñando algún tipo de panel de control (dashboard) donde mucha información necesita ser visible a la vez, empaquetar esa información para que todo quepa en una sola pantalla podría valer la pena aunque el diseño se sienta más ocupado.</p>
+<p><img alt="" src="../game.png" /></p>
+<p>Lo importante es que esto sea una decisión deliberada en lugar de ser simplemente la opción por defecto. Es mucho más obvio cuándo necesitas eliminar espacio en blanco que cuándo necesitas añadirlo.</p>
+<h2 id="establece-un-sistema-de-espaciado-y-tamano">Establece un sistema de espaciado y tamaño<a class="headerlink" href="#establece-un-sistema-de-espaciado-y-tamano" title="Permanent link">&para;</a></h2>
+<p>No deberías estar buscando minuciosamente entre 120px y 125px al intentar decidir el tamaño perfecto para un elemento en tu UI.</p>
+<p>Probar dolorosamente valores arbitrarios de un píxel a la vez te va a frenar drásticamente en el mejor de los casos, y crear diseños feos e inconsistentes en el peor. </p>
+<p><img alt="" src="../b1.png" /></p>
+<p>En su lugar, limítate a un conjunto restringido de valores, definido de antemano.</p>
+<h3 id="una-escala-lineal-no-funcionara">Una escala lineal no funcionará<a class="headerlink" href="#una-escala-lineal-no-funcionara" title="Permanent link">&para;</a></h3>
+<p>Crear un sistema de espaciado y tamaño no es tan simple como algo como "asegúrate de que todo sea un múltiplo de 4px" — un enfoque ingenuo como ese no hace más fácil elegir entre 120px y 125px.</p>
+<p>Para que un sistema sea verdaderamente útil, necesita tomar en consideración la diferencia relativa entre valores adyacentes.</p>
+<p>En el extremo pequeño de la escala (como el tamaño de un icono, o el padding dentro de un botón), un par de píxeles puede hacer una gran diferencia. ¡Saltar de 12px a 16px es un aumento del 33%! </p>
+<p><img alt="" src="../b2.png" /></p>
+<p>Pero en el extremo grande (el ancho de una tarjeta, o el espaciado vertical en el hero de una landing page), un par de píxeles es básicamente imperceptible. Incluso aumentar el ancho de una tarjeta de 500px a 520px es solo una diferencia del 4%, que es ocho veces menos significativa que el salto de 12px a 16px.</p>
+<p><img alt="" src="../b3.png" /></p>
+<p>Si quieres que tu sistema facilite tomar decisiones de tamaño, asegúrate de que ningún par de valores en tu escala esté más cerca que alrededor del 25%.</p>
+<h3 id="definiendo-el-sistema">Definiendo el sistema<a class="headerlink" href="#definiendo-el-sistema" title="Permanent link">&para;</a></h3>
+<p>Justo como no quieres afanarte con valores arbitrarios al dimensionar un elemento o ajustar el espacio entre elementos, tampoco quieres construir tu escala de espaciado y tamaño a partir de valores arbitrarios.</p>
+<p>Un enfoque simple es empezar con un valor base sensato, y luego construir una escala usando factores y múltiplos de ese valor.</p>
+<p>16px es un gran número para empezar porque divide bien, y además resulta ser el tamaño de fuente por defecto en todos los navegadores web principales.</p>
+<p>Los valores en el extremo pequeño de la escala deberían empezar bastante juntos, y hacerse progresivamente más separados a medida que subes en la escala.</p>
+<p>Aquí hay un ejemplo de una escala bastante práctica construida usando este enfoque:</p>
+<p><img alt="" src="../b4.png" /></p>
+<h3 id="usando-el-sistema">Usando el sistema<a class="headerlink" href="#usando-el-sistema" title="Permanent link">&para;</a></h3>
+<p>Una vez que hayas definido tu sistema de espaciado y tamaño, te darás cuenta de que puedes diseñar mucho más rápido, especialmente si diseñas en el navegador (apegarse a un sistema es más fácil cuando escribes números que cuando arrastras con el mouse).</p>
+<p>¿Necesitas añadir algo de espacio debajo de un elemento? Toma un valor de tu escala y pruébalo. ¿No es suficiente? El siguiente valor probablemente sea perfecto.</p>
+<p>Mientras que las mejoras en el flujo de trabajo son probablemente el mayor beneficio, también empezarás a notar una consistencia sutil en tus diseños que no estaba ahí antes, y las cosas se verán solo un poco más limpias.</p>
+<p><img alt="" src="../b5.png" /></p>
+<p>Un sistema de espaciado y tamaño te ayudará a crear mejores diseños, con menos esfuerzo, en menos tiempo.</p>
+<h2 id="no-tienes-que-llenar-toda-la-pantalla">No tienes que llenar toda la pantalla<a class="headerlink" href="#no-tienes-que-llenar-toda-la-pantalla" title="Permanent link">&para;</a></h2>
+<p>¿Recuerdas cuando 960px era el ancho de layout por defecto para los diseños de escritorio? Hoy en día te costaría encontrar un teléfono con una resolución tan baja.</p>
+<p>Entonces no es sorpresa que cuando la mayoría de nosotros abre nuestra herramienta de diseño favorita en nuestros monitores de alta resolución, nos demos al menos 1200-1400px de espacio para llenar. Pero solo porque tengas el espacio, no significa que tengas que usarlo. </p>
+<p><img alt="" src="../c1.png" /></p>
+<p>Si solo necesitas 600px, usa 600px. Esparcir las cosas o hacerlas innecesariamente anchas solo hace que una interfaz sea más difícil de interpretar, mientras que un poco de espacio extra alrededor de los bordes nunca le hizo daño a nadie.</p>
+<p><img alt="" src="../c2.png" /></p>
+<p>Esto también aplica a secciones individuales de una interfaz. No necesitas hacer todo a ancho completo solo porque algo más (como tu navegación) sea de ancho completo.</p>
+<p><img alt="" src="../c3.png" /></p>
+<p>Dale a cada elemento solo el espacio que necesita — no empeores algo solo para que combine con otra cosa.</p>
+<h3 id="reduce-el-lienzo">Reduce el lienzo<a class="headerlink" href="#reduce-el-lienzo" title="Permanent link">&para;</a></h3>
+<p>Si tienes problemas para diseñar una interfaz pequeña en un lienzo grande, ¡reduce el lienzo! Muchas veces es más fácil diseñar algo pequeño cuando las restricciones son reales.</p>
+<p>Si estás construyendo una aplicación web responsiva, intenta empezar con un lienzo de ~400px y diseñar primero el layout móvil. </p>
+<p><img alt="" src="../c4.png" /></p>
+<p>Una vez que tengas un diseño móvil con el que estés contento, llévalo a una pantalla de mayor tamaño y ajusta cualquier cosa que haya sentido como un compromiso en pantallas más pequeñas. Lo más probable es que no tengas que cambiar tanto como crees.</p>
+<p><img alt="" src="../c5.png" /></p>
+<h3 id="piensa-en-columnas">Piensa en columnas<a class="headerlink" href="#piensa-en-columnas" title="Permanent link">&para;</a></h3>
+<p>Si estás diseñando algo que funciona mejor a un ancho más estrecho pero se siente desequilibrado en el contexto de una UI por lo demás ancha, mira si puedes dividirlo en columnas en lugar de solo hacerlo más ancho.</p>
+<p>Por ejemplo, toma este layout de formulario estrecho:</p>
+<p><img alt="" src="../c6.png" /></p>
+<p>Si quisieras hacer mejor uso del espacio disponible sin hacer el formulario más difícil de usar, podrías separar el texto de apoyo en una columna aparte:</p>
+<p><img alt="" src="../c7.png" /></p>
+<p>Esto hace que el diseño se sienta más equilibrado y consistente sin comprometer el ancho óptimo del formulario en sí.</p>
+<h3 id="no-lo-fuerces">No lo fuerces<a class="headerlink" href="#no-lo-fuerces" title="Permanent link">&para;</a></h3>
+<p>Justo como no deberías preocuparte por llenar toda la pantalla, tampoco deberías intentar meter todo en un área pequeña innecesariamente.</p>
+<p>Si necesitas mucho espacio, ¡úsalo! Solo no te sientas obligado a llenarlo si no tienes que hacerlo.</p>
+<h2 id="los-grids-estan-sobrevalorados">Los grids están sobrevalorados<a class="headerlink" href="#los-grids-estan-sobrevalorados" title="Permanent link">&para;</a></h2>
+<p>Usar un sistema como un grid de 12 columnas es una gran manera de simplificar las decisiones de layout, y puede traer una satisfactoria sensación de orden a tus diseños. </p>
+<p><img alt="" src="../d1.png" /></p>
+<p>Pero aunque los grids pueden ser útiles, delegar todas tus decisiones de layout a un grid puede hacer más daño que bien.</p>
+<h3 id="no-todos-los-elementos-deberian-ser-fluidos">No todos los elementos deberían ser fluidos<a class="headerlink" href="#no-todos-los-elementos-deberian-ser-fluidos" title="Permanent link">&para;</a></h3>
+<p>Fundamentalmente, un sistema de grid se trata solo de darle a los elementos anchos fluidos basados en porcentajes, donde eliges de un conjunto restringido de porcentajes.</p>
+<p>Por ejemplo, en un grid de 12 columnas cada columna es 8.33% de ancho. Mientras el ancho de un elemento sea algún múltiplo de 8.33% (incluyendo cualquier gutter), ese elemento está "en el grid".</p>
+<p><img alt="" src="../d2.png" /></p>
+<p>El problema con tratar los sistemas de grid como una religión es que hay muchas situaciones donde tiene mucho más sentido que un elemento tenga un ancho fijo en lugar de un ancho relativo.</p>
+<p>Por ejemplo, considera un layout tradicional con barra lateral. Usando un sistema de grid de 12 columnas, podrías darle a la barra lateral un ancho de tres columnas (25%) y al área de contenido principal un ancho de nueve columnas (75%). </p>
+<p><img alt="" src="../d3.png" /></p>
+<p>Esto puede parecer bien al principio, pero piensa en lo que pasa cuando redimensionas la pantalla.</p>
+<p>Si haces la pantalla más ancha, la barra lateral también se hace más ancha, ocupando espacio que podría haberse aprovechado mejor con el área de contenido principal. </p>
+<p><img alt="" src="../d4.png" /></p>
+<p>De manera similar, si haces la pantalla más estrecha, la barra lateral puede encogerse por debajo de su ancho mínimo razonable, causando ajustes de texto (wrapping) o truncamiento incómodos.</p>
+<p><img alt="" src="../d5.png" /></p>
+<p>En esta situación, tiene mucho más sentido darle a la barra lateral un ancho fijo optimizado para su contenido. El área de contenido principal puede entonces flexionarse para llenar el espacio restante, usando su propio grid interno para acomodar a sus hijos.</p>
+<p><img alt="" src="../d6.png" /></p>
+<p>Esto aplica también dentro de los componentes — no uses porcentajes para dimensionar algo a menos que realmente quieras que escale.</p>
+<p><img alt="" src="../d7.png" /></p>
+<h3 id="no-encojas-un-elemento-hasta-que-lo-necesites">No encojas un elemento hasta que lo necesites<a class="headerlink" href="#no-encojas-un-elemento-hasta-que-lo-necesites" title="Permanent link">&para;</a></h3>
+<p>Digamos que estás diseñando una tarjeta de inicio de sesión. Usar el ancho completo de la pantalla se vería feo, así que le das un ancho de 6 columnas (50%) con un offset de 3 columnas a cada lado. </p>
+<p><img alt="" src="../d8.png" /></p>
+<p>En pantallas medianas te das cuenta de que la tarjeta es un poco estrecha aunque tienes el espacio para hacerla más grande, así que en ese tamaño de pantalla la cambias a un ancho de 8 columnas, con dos columnas vacías a cada lado.</p>
+<p><img alt="" src="../d9.png" /></p>
+<p>Lo tonto de este enfoque es que, como los anchos de columna son fluidos, hay un rango de tamaños de pantalla donde la tarjeta de inicio de sesión es más ancha en pantallas medianas que en pantallas grandes:</p>
+<p><img alt="" src="../d10.png" /></p>
+<p>Si sabes que, digamos, 500px es el tamaño óptimo para la tarjeta, ¿por qué debería ser más pequeña que eso si tienes espacio para ella?</p>
+<p>En lugar de dimensionar elementos así basándote en un grid, dales un ancho máximo (max-width) para que no se hagan demasiado grandes, y solo oblígalos a encogerse cuando la pantalla sea más pequeña que ese ancho máximo.</p>
+<p><img alt="" src="../d11.png" /></p>
+<p>No seas esclavo del grid — dale a tus componentes el espacio que necesitan y no hagas compromisos hasta que sea realmente necesario.</p>
+<h2 id="el-dimensionamiento-relativo-no-escala">El dimensionamiento relativo no escala<a class="headerlink" href="#el-dimensionamiento-relativo-no-escala" title="Permanent link">&para;</a></h2>
+<p>Es tentador creer que cada parte de una interfaz debería dimensionarse relativa a las demás, y que si el elemento A necesita encogerse un 25% en pantallas más pequeñas, el elemento B también debería encogerse un 25%.</p>
+<p>Por ejemplo, digamos que estás diseñando un artículo en un tamaño de pantalla grande. Si tu cuerpo de texto es 18px y tus titulares son 45px, es tentador codificar esa relación definiendo el tamaño de tus titulares como 2.5em; 2.5 veces el tamaño de fuente actual.</p>
+<p><img alt="" src="../e1.png" /></p>
+<p>No hay nada intrínsecamente malo en usar unidades relativas como em, pero no te dejes engañar creyendo que las relaciones definidas de esta manera pueden permanecer estáticas — 2.5em puede ser el tamaño perfecto de titular en escritorio, pero no hay garantía de que sea el tamaño correcto en pantallas más pequeñas.</p>
+<p>Digamos que reduces el tamaño de tu cuerpo de texto a 14px en pantallas pequeñas para mantener la longitud de línea bajo control. Mantener tus titulares a 2.5em significa un tamaño de fuente renderizado de 35px — ¡demasiado grande para una pantalla pequeña! </p>
+<p><img alt="" src="../e2.png" /></p>
+<p>Un mejor tamaño de titular para pantallas pequeñas podría estar en algún lugar entre 20px y 24px:</p>
+<p><img alt="" src="../e3.png" /></p>
+<p>Eso es solo 1.5-1.7x el tamaño del cuerpo de texto de 14px — una relación totalmente diferente a la que tenía sentido en pantallas de escritorio. Eso significa que no hay ninguna relación real, y que no hay ningún beneficio real en tratar de definir el tamaño del titular relativo al tamaño del cuerpo de texto.</p>
+<p>Como regla general, los elementos que son grandes en pantallas grandes necesitan encogerse más rápido que los elementos que ya son bastante pequeños — la diferencia entre elementos pequeños y grandes debería ser menos extrema en tamaños de pantalla pequeños.</p>
+<h3 id="relaciones-dentro-de-los-elementos">Relaciones dentro de los elementos<a class="headerlink" href="#relaciones-dentro-de-los-elementos" title="Permanent link">&para;</a></h3>
+<p>La idea de que las cosas deberían escalar de forma independiente no solo aplica a dimensionar elementos en diferentes tamaños de pantalla; también aplica a las propiedades de un solo componente.</p>
+<p>Digamos que has diseñado un botón. Tiene un tamaño de fuente de 16px, 16px de padding horizontal, y 12px de padding vertical:</p>
+<p><img alt="" src="../e4.png" /></p>
+<p>Muy parecido al ejemplo anterior, es tentador pensar que el padding debería definirse en términos del tamaño de fuente actual. De esa manera, si quieres un botón más grande o más pequeño, solo necesitas cambiar el tamaño de fuente y el padding se actualizará automáticamente, ¿verdad? </p>
+<p><img alt="" src="../e5.png" /></p>
+<p>Esto funciona — los botones sí escalan hacia arriba o hacia abajo y preservan las mismas proporciones. ¿Pero es eso lo que realmente queremos?</p>
+<p>Compara eso con estos botones, donde el padding se vuelve más generoso en tamaños más grandes y desproporcionadamente más ajustado en tamaños más pequeños:</p>
+<p><img alt="" src="../e6.png" /></p>
+<p>Aquí el botón grande realmente se siente como un botón más grande, y los botones pequeños realmente se sienten como botones más pequeños, no como si simplemente hubiéramos ajustado el zoom.</p>
+<p>Deja ir la idea de que todo necesita escalar proporcionalmente — darte la libertad de ajustar las cosas de forma independiente hace mucho más fácil diseñar para múltiples contextos.</p>
+<h2 id="evita-el-espaciado-ambiguo">Evita el espaciado ambiguo<a class="headerlink" href="#evita-el-espaciado-ambiguo" title="Permanent link">&para;</a></h2>
+<p>Cuando grupos de elementos están explícitamente separados — generalmente por un borde o un color de fondo — es obvio qué elementos pertenecen a qué grupo. </p>
+<p><img alt="" src="../f1.png" /></p>
+<p>Pero cuando no hay un separador visible, no siempre es tan obvio.</p>
+<p>Digamos que estás diseñando un formulario con etiquetas e inputs apilados. Si el margen debajo de la etiqueta es igual al margen debajo del input, los elementos en el grupo del formulario no se sentirán obviamente "conectados". </p>
+<p><img alt="" src="../f2.png" /></p>
+<p>En el mejor de los casos el usuario tiene que trabajar más para interpretar la UI, y en el peor significa poner accidentalmente los datos equivocados en el campo equivocado.</p>
+<p>La solución es aumentar el espacio entre cada grupo de formulario para que quede claro qué etiqueta pertenece a qué input:</p>
+<p><img alt="" src="../f3.png" /></p>
+<p>Este mismo problema aparece en el diseño de artículos cuando no hay suficiente espacio encima de los encabezados de sección:</p>
+<p><img alt="" src="../f4.png" /></p>
+<p>...y en listas con viñetas, cuando el espacio entre las viñetas coincide con la altura de línea de una sola viñeta:</p>
+<p><img alt="" src="../f5.png" /></p>
+<p>Tampoco es solo el espaciado vertical lo que tienes que tener en cuenta; es fácil cometer este error con componentes que están dispuestos horizontalmente también:</p>
+<p><img alt="" src="../f6.png" /></p>
+<p>Cada vez que dependas del espaciado para conectar un grupo de elementos, asegúrate siempre de que haya más espacio alrededor del grupo del que hay dentro de él — las interfaces que son difíciles de entender siempre se ven peor.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-circle-arrow-up" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16 12-4-4-4 4M12 16V8"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../capitulo-2/Jerarquiaestodo/" class="md-footer__link md-footer__link--prev" aria-label="Previous: JERARQUIA ES TODO">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7M19 12H5"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                JERARQUIA ES TODO
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../Efficient_NodeJS/cap1/nodeFundamentals.md" class="md-footer__link md-footer__link--next" aria-label="Next: NODE FUNDAMENTALS">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                NODE FUNDAMENTALS
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 The authors
+
+    </div>
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate":null,"base":"../../..","features":["announce.dismiss","content.code.annotate","content.code.copy","content.code.select","content.footnote.tooltips","content.tabs.link","content.tooltips","navigation.footer","navigation.indexes","navigation.instant","navigation.instant.prefetch","navigation.path","navigation.sections","navigation.top","navigation.tracking","search.highlight"],"search":"../../../assets/javascripts/workers/search.b6b7e04f.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.d7f30b55.min.js"></script>
+      
+    
+  </body>
+</html>
