@@ -20,6 +20,9 @@ nav = [
             { "EMPEZANDO DE CERO" = "refactoring-ui/capitulo-1/Empezandodecero.md" },
             { "JERARQUIA ES TODO" = "refactoring-ui/capitulo-2/Jerarquiaestodo.md" },
             { "DISPOSICION Y ESPACIADO" = "refactoring-ui/capitulo-3/Disposicionyespaciado.md" },
+            { "DISENIO DE TEXTO" = "refactoring-ui/capitulo-4/Diseniodetexto.md" },
+            { "TRABAJANDO CON COLOR" = "refactoring-ui/capitulo-5/Trabajandoconcolor.md" },
+
           ]
         },{ "OTHER BOOK" = [ { "NODE FUNDAMENTALS" = "Efficient_NodeJS/cap1/nodeFundamentals.md" },]}
 
