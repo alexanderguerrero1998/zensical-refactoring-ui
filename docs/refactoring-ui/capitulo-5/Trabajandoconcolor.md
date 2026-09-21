@@ -246,4 +246,97 @@ Por supuesto también puedes combinar estos enfoques, obteniendo algo del brillo
 
 Aunque es una gran manera de cambiar el brillo de un color sin afectar su intensidad, funciona mejor en dosis pequeñas. No rotees el tono más de 20-30° o se verá como un color completamente diferente en lugar de solo más claro o más oscuro.
 
+## Los grises no tienen por qué ser grises
+
+Por definición, el gris verdadero tiene una saturación de 0% — no tiene nada de color real en absoluto.
+
+![](e1.png)
+
+Pero en la práctica, muchos de los colores que pensamos que son grises están en realidad bastante saturados:
+
+![](e2.png)
+
+Esta saturación es lo que hace que algunos grises se sientan fríos y que otros se sientan cálidos.
+
+![](e3.png)
+
+### Temperatura de color
+
+Si alguna vez has comprado bombillas, has tenido que decidir entre bombillas de "blanco cálido" que emiten una luz amarillenta, y bombillas de "blanco frío" que emiten una luz azulada.
+
+Saturar los grises en una interfaz de usuario funciona de una manera muy similar.
+
+Si quieres que tus grises se sientan fríos, satúralos con un poco de azul:
+
+![](e4.png)
+
+Para darle a tus grises una sensación más cálida, satúralos con un poco de amarillo o naranja:
+
+Para mantener una temperatura consistente, no olvides aumentar la saturación en los tonos más claros y más oscuros. Si no lo haces, esos tonos se verán un poco deslavados comparados con los grises que están más cerca del 50% de luminosidad.
+
+Cuánto quieras saturar tus grises depende completamente de ti — añade solo un poco si solo quieres inclinar ligeramente la temperatura, o súbelo si quieres que la interfaz se incline fuertemente en una dirección u otra.
+
+## Accesible no tiene que significar feo
+
+Para asegurarte de que tus diseños sean accesibles, las Pautas de Accesibilidad al Contenido Web (WCAG) recomiendan que el texto normal (menor a ~18px) tenga una relación de contraste de al menos 4.5:1, y que el texto más grande tenga una relación de contraste de al menos 3:1.
+
+![](f1.png)
+
+Para las situaciones típicas de texto oscuro sobre un fondo claro, cumplir esta recomendación es bastante fácil, pero se pone mucho más complicado cuando empiezas a trabajar con color.
+
+
+
+### Invirtiendo el contraste
+
+Cuando usas texto blanco sobre un fondo de color, te sorprendería ver lo oscuro que a menudo el color necesita ser para cumplir esa relación de contraste de 4.5:1.
+![](f2.png)
+
+Esto puede crear problemas de jerarquía cuando se supone que esos elementos no son el foco de la página — los fondos de colores oscuros realmente acapararán la atención del usuario.
+
+![](f3.png)
+
+Puedes resolver este problema invirtiendo el contraste. En lugar de usar texto claro sobre un fondo de color oscuro, usa texto de color oscuro sobre un fondo de color claro:
+
+![](f4.png)
+
+El color sigue ahí para ayudar a sostener el texto, pero es mucho menos invasivo y no interfiere tanto con otras acciones en la página.
+
+### Rotando el tono
+
+Aún más difícil que el texto blanco sobre un fondo de color es el texto de color sobre un fondo de color. Te encontrarás con esta situación si alguna vez intentas elegir un color para algo de texto secundario dentro de un panel de color oscuro.
+
+Si empiezas tomando el color de fondo y simplemente ajustas la luminosidad y la saturación, descubrirás que es difícil cumplir la relación de contraste recomendada sin acercarte mucho al blanco puro.
+
+![](f5.png)
+
+No quieres que el texto primario y el texto secundario se vean iguales, entonces ¿qué más puedes hacer?
+
+Bueno, ya que algunos colores son más brillantes que otros, una forma de aumentar el contraste sin acercarte al blanco es rotar el tono hacia un color más brillante, como cian, magenta o amarillo.
+
+![](f6.png)
+
+Esto puede hacer que sea mucho más fácil hacer que el texto sea accesible mientras lo mantienes colorido.
+
+## No te bases solo en el color
+
+El color puede ser una manera fantástica de realzar la información y hacerla más fácil de entender, pero ten cuidado de no depender de él, o los usuarios con daltonismo tendrán dificultades para interpretar tu interfaz.
+
+Toma estas tarjetas de métricas, por ejemplo. Con este diseño, alguien que sea daltónico rojo-verde no puede distinguir fácilmente si una métrica ha mejorado o empeorado:
+
+![](g1.png)
+
+Una solución fácil para esto es comunicar esa información de alguna otra manera, como añadiendo iconos para indicar si el cambio es positivo o negativo.
+
+![](g2.png)
+
+¿Qué pasa con algo como una gráfica, donde cada línea de tendencia tiene un color diferente?
+
+![](g3.png)
+
+En situaciones como esta, intenta confiar en el contraste en lugar de usar colores completamente distintos. Es mucho más fácil para alguien con daltonismo distinguir la diferencia entre claro y oscuro que distinguir la diferencia entre dos colores distintos.
+
+![](g4.png)
+
+Usa siempre el color para apoyar algo que tu diseño ya está diciendo; nunca lo uses como el único medio de comunicación.
+
 
