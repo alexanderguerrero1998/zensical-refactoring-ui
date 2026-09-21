@@ -258,8 +258,6 @@ Pero en la práctica, muchos de los colores que pensamos que son grises están e
 
 Esta saturación es lo que hace que algunos grises se sientan fríos y que otros se sientan cálidos.
 
-![](e3.png)
-
 ### Temperatura de color
 
 Si alguna vez has comprado bombillas, has tenido que decidir entre bombillas de "blanco cálido" que emiten una luz amarillenta, y bombillas de "blanco frío" que emiten una luz azulada.
@@ -268,9 +266,11 @@ Saturar los grises en una interfaz de usuario funciona de una manera muy similar
 
 Si quieres que tus grises se sientan fríos, satúralos con un poco de azul:
 
-![](e4.png)
+![](e3.png)
 
 Para darle a tus grises una sensación más cálida, satúralos con un poco de amarillo o naranja:
+
+![](e4.png)
 
 Para mantener una temperatura consistente, no olvides aumentar la saturación en los tonos más claros y más oscuros. Si no lo haces, esos tonos se verán un poco deslavados comparados con los grises que están más cerca del 50% de luminosidad.
 
@@ -289,6 +289,7 @@ Para las situaciones típicas de texto oscuro sobre un fondo claro, cumplir esta
 ### Invirtiendo el contraste
 
 Cuando usas texto blanco sobre un fondo de color, te sorprendería ver lo oscuro que a menudo el color necesita ser para cumplir esa relación de contraste de 4.5:1.
+
 ![](f2.png)
 
 Esto puede crear problemas de jerarquía cuando se supone que esos elementos no son el foco de la página — los fondos de colores oscuros realmente acapararán la atención del usuario.
