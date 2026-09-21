@@ -22,6 +22,10 @@ nav = [
             { "DISPOSICION Y ESPACIADO" = "refactoring-ui/capitulo-3/Disposicionyespaciado.md" },
             { "DISENIO DE TEXTO" = "refactoring-ui/capitulo-4/Diseniodetexto.md" },
             { "TRABAJANDO CON COLOR" = "refactoring-ui/capitulo-5/Trabajandoconcolor.md" },
+            { "CREANDO PROFUNDIDAD" = "refactoring-ui/capitulo-6/Creandoprofundidad.md" },
+            { "TRABAJANDO CON IMAGENES" = "refactoring-ui/capitulo-7/Trabajandoconimagenes.md" },
+            { "TOQUES FINALES" = "refactoring-ui/capitulo-8/Toquesfinales.md" },
+            { "SUBIENDO DE NIVEL" = "refactoring-ui/capitulo-9/Subiendodenivel.md" },
 
           ]
         },{ "OTHER BOOK" = [ { "NODE FUNDAMENTALS" = "Efficient_NodeJS/cap1/nodeFundamentals.md" },]}
